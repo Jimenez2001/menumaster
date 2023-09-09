@@ -79,8 +79,22 @@ const MenuMasterProvider = ({children}) => {
         e.preventDefault();
 
         try {//La función que permitira envio de datos a la API
-            await axios.post('/api/ordenes', {pedido, nombre, total,
-            fecha: Date.now().toString()})
+            const fechaActual = new Date(); // Obtener la fecha actual
+            const opcionesDeFormato = { //Arreglamos el formato de la fecha a una manera más entendible
+                year: 'numeric', 
+                month: 'numeric', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true // Habilitar el formato de 12 horas (AM/PM) 
+            };
+
+            const fechaFormateada = fechaActual.toLocaleDateString('es-ES', opcionesDeFormato); // Formatear la fecha
+
+            await axios.post('/api/ordenes', {pedido, nombre, total,//API POST para enviar los datos del pedido a la base de datos
+            fecha: fechaFormateada // Utilizar la fecha formateada
+            })
 
             //Resetear la app
             setCategoriaActual(categorias[0]);//Para regresar a la primer categoria

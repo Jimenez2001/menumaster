@@ -7,7 +7,7 @@ import Orden from '../components/Orden'//Para mandar a llamar el componente Orde
 export default function Cocina() {
 
     const fetcher = () => axios.get('/api/ordenes').then(datos => datos.data)//Usamos axios para hacer la consulta a la API get de la data de las ordenes
-    const { data, error, isLoading } = useSWR('/api/ordenes', fetcher)//Retorna los datos de la consulta, tambien algún error y también muestra contenido antes de la nueva consulta y mandamos a llamar la funcion fetcher
+    const { data, error, isLoading } = useSWR('/api/ordenes', fetcher, {refreshInterval: 100})//Retorna los datos de la consulta, tambien algún error y también muestra contenido antes de la nueva consulta y mandamos a llamar la funcion fetcher
 
     /* console.log(data);
     console.log(error);
