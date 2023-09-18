@@ -2,11 +2,13 @@ import Image from "next/image";
 import { formatearDinero } from '../helpers'
 import useMenuMaster from "../hooks/useMenuMaster";
 
+
 const ResumenProducto = ({ producto }) => {
 
     const { handleEditarCantidades, handleEliminarProducto } = useMenuMaster();//Declaramos la variable de handle con el use principal
 
   return (
+
     <div className="shadow p-5 mb-3 flex gap-10 items-center">
         <div className="md:w-1/6">
             <Image

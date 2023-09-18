@@ -2,6 +2,7 @@
 import Image from "next/image";//Importamos las imagenes para poder verlas en el panel de cocina
 import axios from "axios";// se utiliza para realizar solicitudes HTTP (por ejemplo, solicitudes GET, POST, PUT, DELETE, etc.) desde el lado del cliente
 import { toast } from 'react-toastify'//Para usar las alertas toastify
+import Swal from 'sweetalert2';//Importamos los sweet alert
 import { formatearDinero } from '../helpers'//Para mostrar el total en Quetzales
 
 export default function Orden({orden}) {
@@ -9,10 +10,24 @@ export default function Orden({orden}) {
     
     const completarOrden = async () => {//Funcion que usamos en el boton para actualizar el estado del pedido
         try {
-            const confirmacion = window.confirm('Está seguro de completar esta orden?')
-            if (confirmacion) {
+                // Mostrar una alerta de confirmación con SweetAlert2
+            const result = await Swal.fire({
+                title: '¿Completar orden?',
+                text: '¿Estás seguro de que deseas completar esta orden?',
+                icon: 'question',
+                showDenyButton: true,
+                confirmButtonText: 'Sí, completar',
+                cancelButtonText: 'Cancelar',
+                denyButtonText: 'No completar'
+            });
+
+            if (result.isConfirmed) {
+                // Realizar la acción para completar la orden
                 const data = await axios.post(`/api/ordenes/${id}`)
-                toast.success('Orden Lista')
+                //toast.success('Orden Lista')
+                Swal.fire('Orden Lista', '', 'success')
+            } else if (result.isDenied) {
+                Swal.fire('La orden no ha sido completada', '', 'info')
             }
             
         } catch (error) {

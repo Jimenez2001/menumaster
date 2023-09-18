@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-export default async function handler(req, res) {//Funcion declaraci
+export default async function handler(req, res) {//Funcion declaracion
 
     const prisma = new PrismaClient();//Para declarar la nueva instancia 
 
