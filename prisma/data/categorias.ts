@@ -1,27 +1,55 @@
 const categorias = [
     {
-        icono: "cafe",
-        nombre: "Café"
+        icono: "desayuno_cena",//CATEGORIA 1 DESAYUNOS/CENAS
+        nombre: "Desayunos/Cenas"
       },
       {
-        icono: "hamburguesa",
-        nombre: "Hamburguesas"
+        icono: "parrillada",//CATEGORIA 2 PARRILLADAS
+        nombre: "Parrilladas"
       },
       {
-        icono: "pizza",
-        nombre: "Pizzas"
+        icono: "pa_disfrutar",//CATEGORIA 3 PA' DISFRUTAR
+        nombre: "Pa' Disfrutar"
       },
       {
-        icono: "dona",
-        nombre: "Donas"
+        icono: "guarnicion",//CATEGORIA 4 GUARNICIONES X LIBRA
+        nombre: "Guarniciones"
       },
       {
-        icono: "pastel",
-        nombre: "Pasteles"
+        icono: "mariscada",//CATEGORIA 5 MARISCADAS
+        nombre: "Mariscadas"
       },
       {
-        icono: "galletas",
-        nombre: "Galletas"
+        icono: "muelita",//CATEGORIA 6 PA' LA MUELITA
+        nombre: "Pa' la muelita"
+      },
+      {
+        icono: "caldo_sopa",//CATEGORIA 7 CALDOS/SOPAS
+        nombre: "Caldos/Sopas"
+      },
+      {
+        icono: "ensalada",//CATEGORIA 8 ENSALADAS
+        nombre: "Ensaladas"
+      },
+      {
+        icono: "pal_frio",//CATEGORIA 9 PA' EL FRIO
+        nombre: "Pa' el frio"
+      },
+      {
+        icono: "pal_calor",//CATEGORIA 10 PA' EL CALOR
+        nombre: "Pa' el calor"
+      },
+      {
+        icono: "cerveza",//CATEGORIA 11 CERVEZAS
+        nombre: "Cervezas"
+      },
+      {
+        icono: "wiskasos",//CATEGORIA 12 WISKASOS
+        nombre: "Wiskasos"
+      },
+      {
+        icono: "menu_dia",//CATEGORIA 13 MENU DEL DIA
+        nombre: "Menú del día"
       }
 ]
 

@@ -15,7 +15,7 @@ const ResumenProducto = ({ producto }) => {
                 width={300}//Aqui mostraremos la imagen del producto en el resumen
                 height={400}
                 alt={`Imagen producto ${producto.nombre}`}
-                src={`/assets/img/${producto.imagen}.jpg`}
+                src={`/assets/img/${producto.imagen}.jpeg`}
             />
         </div>
 

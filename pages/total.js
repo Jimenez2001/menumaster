@@ -51,8 +51,8 @@ export default function Total() {
                         type="submit"
                         className={`${
                             comprobarPedido() 
-                            ? "bg-indigo-100" 
-                            : "bg-indigo-600 hover:bg-indigo-800"
+                            ? "bg-gray-400" 
+                            : "bg-green-600 hover:bg-green-800"
                         } w-full lg:w-auto px-5 py-0 rounded uppercase
                         font-bold text-white text-center`}
                         value="Confirmar Pedido"

@@ -14,7 +14,7 @@ const Categoria = ({categoria}) => {
             <Image
                 width={70}
                 height={70}
-                src={`/assets/img/icono_${icono}.svg`}
+                src={`/assets/img/icono_${icono}.png`}
                 alt="Imagen Icono"
             />
 

@@ -1,5 +1,5 @@
 import { productos } from '@/prisma/data/productos';
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'; //Para poder insertar en la base de datos
 
 
 

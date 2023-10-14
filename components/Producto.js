@@ -10,10 +10,11 @@ const Producto = ({producto}) => {
   return (
     <div className="border p-3">
         <Image //Imprimimos las imágenes de los productos
-            src={`/assets/img/${imagen}.jpg`} 
+            src={`/assets/img/${imagen}.jpeg`} 
             alt={`Imagen Platillo ${nombre}`}
             width={400}
             height={500} 
+            className="w-full h-40"
         />
     
         <div //Imprimimos los nombres 
@@ -25,8 +26,8 @@ const Producto = ({producto}) => {
 
             <button
                 type="button"
-                className="bg-indigo-600 hover:bg-indigo-800 text-white
-                w-full mt-5 p-3 uppercase font-bold"
+                className="bg-yellow-600 hover:bg-yellow-800 text-white
+                w-full mt-5 p-3 uppercase font-bold rounded"
                 onClick={() => {
                     handleChangeModal();
                     handleSetProducto(producto);

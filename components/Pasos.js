@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'//libreria para que navegue entre componentes
 
 const pasos = [//url de cada vista
-    { paso: 1, nombre: "Menú", url: "/" },
+    { paso: 1, nombre: "Menú", url: "/home" },
     { paso: 2, nombre: "Resumen", url: "/resumen" },
     { paso: 3, nombre: "Datos y Total", url: "/total" },
 ];
@@ -13,7 +13,7 @@ export const Pasos = () => {
         /* const porcentaje = (paso / 3) * 100;
         return porcentaje; */
         let valor;
-        if(router.pathname === "/") {
+        if(router.pathname === "/home") {
             valor = 2;
         } else if (router.pathname === "/resumen") {
             valor = 50;

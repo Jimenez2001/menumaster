@@ -14,6 +14,10 @@ const MenuMasterProvider = ({ children }) => {
   const [pedido, setPedido] = useState([]); //Para agregar los productos a un pedido
   const [nombre, setNombre] = useState(""); //Para que enviemos el nombre del mesero
   const [total, setTotal] = useState(0); //Para hacer el total del pedido
+  const [username, setUsername] = useState(""); //Para que enviemos el nombre de usuario
+  const [email, setEmail] = useState(""); //Para que enviemos el correo de usuario
+  const [password, setPassword] = useState(""); //Para que enviemos la contraseña de usuario
+  const [rol_id, setRol_id] = useState(); //Para que enviemos el rol de usuario
 
   const router = useRouter(); //Mando a llamar la libreria router
 
@@ -21,6 +25,7 @@ const MenuMasterProvider = ({ children }) => {
     const { data } = await axios("/api/categorias"); //extraer las imágenes de las categorias
     setCategorias(data);
   };
+
   useEffect(() => {
     obtenerCategorias();
   }, []);
@@ -42,7 +47,7 @@ const MenuMasterProvider = ({ children }) => {
     //funcion al dar click ver categoria actual
     const categoria = categorias.filter((cat) => cat.id === id); //Para filtrar cuando la categoria es igual al id que queremos nos jale las categorias
     setCategoriaActual(categoria[0]);
-    router.push("/"); //Para que al dar click a una categoría siempre lo manda al menu principal
+    router.push("/home"); //Para que al dar click a una categoría siempre lo manda al menu principal
   };
 
   const handleSetProducto = (producto) => {
@@ -79,7 +84,8 @@ const MenuMasterProvider = ({ children }) => {
     setModal(!modal); //Muestra el modal
   };
 
-  const advertenciaEliminarProducto = async (id) => {//Advertencia que se muestra antes de eliminar un producto
+  const advertenciaEliminarProducto = async (id) => {
+    //Advertencia que se muestra antes de eliminar un producto
     //Funcion que usamos en la funcion handleEliminarProducto
     try {
       //Mostrar una alerta de confirmación con SweetAlert2
@@ -111,7 +117,7 @@ const MenuMasterProvider = ({ children }) => {
 
   const handleEliminarProducto = (id) => {
     //Para elminar el pedido del producto
-    advertenciaEliminarProducto(id)
+    advertenciaEliminarProducto(id);
   };
 
   const colocarOrden = async (e) => {
@@ -155,7 +161,7 @@ const MenuMasterProvider = ({ children }) => {
 
       //Regresa al mesero al menú de inicio
       setTimeout(() => {
-        router.push("/");
+        router.push("/home");
       }, 3000);
     } catch (error) {
       console.log(error);
@@ -165,6 +171,34 @@ const MenuMasterProvider = ({ children }) => {
     /* console.log(pedido);
         console.log(nombre);
         console.log(total); */
+  };
+
+  const crearUsuario = async (e) => {
+    //Detallamos que hará la función detallara orden
+    e.preventDefault();
+
+    try {
+      await axios.post("/api/signup", {
+        username,
+        email,
+        password, //API POST para enviar la contraseña
+        rol_id,
+      });
+      Swal.fire(
+        "Usuario creado",
+        "El usuario se ha creado correctamente",
+        "success"
+      );
+
+      // Limpia los campos del formulario
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setRol_id("");
+    } catch (error) {
+      Swal.fire("Error", "No se pudo crear el usuario.", "error");
+      console.error("Error al crear usuario:", error);
+    }
   };
 
   return (
@@ -185,6 +219,15 @@ const MenuMasterProvider = ({ children }) => {
         setNombre,
         colocarOrden,
         total,
+        crearUsuario,
+        username,
+        setUsername,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        rol_id,
+        setRol_id,
       }}
     >
       {children}

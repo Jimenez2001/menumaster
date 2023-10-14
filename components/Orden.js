@@ -52,7 +52,7 @@ export default function Orden({orden}) {
                             <Image
                                 width={400}//Mostramos y damos tamaño a la imagen de cada orden
                                 height={500}
-                                src={`/assets/img/${platillo.imagen}.jpg`}
+                                src={`/assets/img/${platillo.imagen}.jpeg`}
                                 alt={`Imagen Platillo ${platillo.nombre}`}
                             />
                         </div>
@@ -83,7 +83,7 @@ export default function Orden({orden}) {
                 </p> */}
 
                 <button //Boton para actualizar el estado de de los pedidos
-                    className="bg-indigo-600 hover:bg-indigo-800 text-white mt-5 md:mt-0 py-3 px-10 uppercase
+                    className="bg-yellow-600 hover:bg-yellow-800 text-white mt-5 md:mt-0 py-3 px-10 uppercase
                     font-bold rounded-lg"
                     type="button"
                     onClick={completarOrden}

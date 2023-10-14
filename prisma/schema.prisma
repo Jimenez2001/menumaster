@@ -14,6 +14,7 @@ model Producto {
   id Int @id @default(autoincrement())
   nombre String
   precio Float
+  //descripcion String
   imagen String//Si no quisiera campos obligatorios agrego solo ?
   categoria Categoria @relation(fields: [categoriaId], references: [id])
   categoriaId Int
@@ -33,4 +34,23 @@ model Orden {
   total Float
   pedido Json
   estado Boolean @default(false)//Para que cada orden que se cree esté en false
+  estadoCaja Boolean @default(false)//Para que cada orden que se cree esté en false
+}
+
+
+// Usuarios
+model Usuarios {
+  id Int @id @default(autoincrement())
+  username String
+  email String
+  password String
+  rol Roles @relation(fields: [rol_id], references: [id])
+  rol_id Int
+}
+
+// Roles
+model Roles {
+  id Int @id @default(autoincrement())
+  rol String
+  usuarios Usuarios[]
 }

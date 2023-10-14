@@ -28,7 +28,7 @@ const ModalProducto = () => {
                     width={300}
                     height={400}
                     alt={`imagen producto ${producto.nombre}`}
-                    src={`/assets/img/${producto.imagen}.jpg`}
+                    src={`/assets/img/${producto.imagen}.jpeg`}
                 />
             </div>
             <div className="md:w-2/3">
@@ -109,7 +109,7 @@ const ModalProducto = () => {
 
                 <button
                     type="button"//Boton para agregar los productos al pedido
-                    className="bg-indigo-600 hover:bg-indigo-800 px-5 py-2 mt-5
+                    className="bg-yellow-600 hover:bg-yellow-800 px-5 py-2 mt-5
                     text-white font-bold uppercase rounded"
                     onClick={() => handleAgregarPedido({ ...producto, cantidad })
                     }

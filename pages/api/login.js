@@ -1,0 +1,45 @@
+import { PrismaClient } from "@prisma/client";
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+export default async function login(req, res) {
+   
+  try {
+    const prisma = new PrismaClient();
+
+    const { email, password } = req.body;
+  
+    // Buscar usuario por correo electrónico
+    const usuario = await prisma.Usuarios.findFirst({
+      where: {
+        email,
+      },
+    });
+  
+    if (!usuario) {
+      return res.status(401).json({ error: "El usuario no esta registrado" });
+    }
+  
+    // Verificar la contraseña
+    const passwordMatch = await bcrypt.compare(password, usuario.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Credenciales inválidas" });
+    }
+  
+    // Generar el token JWT
+
+    // esto "27^!S*$z!2" es la palabra secreta que se usa para crear el jwt y nos sirve para comprobarlo perra
+    const token = jwt.sign({ userId: usuario.id }, "27^!S*$z!2", {
+      expiresIn: "1h", 
+    });
+  
+
+    // se envia el fucking token
+    res.status(200).json({ token });
+   } catch (error) {
+      // si algo falla :/
+      console.log(error); 
+      res.status(404).json({"error": error});
+   }
+}
