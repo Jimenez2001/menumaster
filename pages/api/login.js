@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 import Swal from "sweetalert2"; //Importamos los sweet alert
+import { PrismaClient } from '@prisma/client';
 
 export default async function login(req, res) {
    
