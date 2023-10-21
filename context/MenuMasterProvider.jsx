@@ -13,6 +13,8 @@ const MenuMasterProvider = ({ children }) => {
   const [modal, setModal] = useState(false); //Para mandar a traer los productos
   const [pedido, setPedido] = useState([]); //Para agregar los productos a un pedido
   const [nombre, setNombre] = useState(""); //Para que enviemos el nombre del mesero
+  const [descripcion, setDescripcion] = useState(""); //Para que enviemos el nombre del mesero
+  const [idMesa, setIdMesa] = useState(""); //Para que enviemos el numero de la mesa
   const [total, setTotal] = useState(0); //Para hacer el total del pedido
   const [username, setUsername] = useState(""); //Para que enviemos el nombre de usuario
   const [email, setEmail] = useState(""); //Para que enviemos el correo de usuario
@@ -143,9 +145,16 @@ const MenuMasterProvider = ({ children }) => {
         opcionesDeFormato
       ); // Formatear la fecha
 
+
+      console.log("Funciona", idMesa);
+
+      console.log("La mas puta", pedido);
+
       await axios.post("/api/ordenes", {
         pedido,
         nombre,
+        descripcion,
+        mesa_id: idMesa,
         total, //API POST para enviar los datos del pedido a la base de datos
         fecha: fechaFormateada, // Utilizar la fecha formateada
       });
@@ -154,6 +163,8 @@ const MenuMasterProvider = ({ children }) => {
       setCategoriaActual(categorias[0]); //Para regresar a la primer categoria
       setPedido([]); //Para que el pedido vuelva a estar vacío
       setNombre(""); //Para que el nombre vuelva a estar vacía
+      setDescripcion("");
+      setIdMesa(""); //Para que el nombre vuelva a estar vacía
       setTotal(0); //Para que el total vuela a ser 0
 
       //Mostrar alerta
@@ -217,6 +228,9 @@ const MenuMasterProvider = ({ children }) => {
         handleEliminarProducto,
         nombre,
         setNombre,
+        descripcion,
+        setDescripcion,
+        setIdMesa,
         colocarOrden,
         total,
         crearUsuario,

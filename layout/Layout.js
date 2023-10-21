@@ -27,7 +27,6 @@ Modal.setAppElement("#__next");
 
 export default function Layout({ children, pagina }) {
   const { modal } = useMenuMaster();
-
   const token = getCookie("_token");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -50,9 +49,9 @@ export default function Layout({ children, pagina }) {
     <>
       {loading ? ( //Para mostrar el spinner por si quieren entrar al sistema sin logearse
         <div className="flex flex-col justify-center items-center min-h-screen bg-yellow-400">
-          <div class="spinner">
-            <div class="dot1"></div>
-            <div class="dot2"></div>
+          <div className="spinner">
+            <div className="dot1"></div>
+            <div className="dot2"></div>
           </div>
           <p className="font-bold uppercase text-white">Redirigiendo.....</p>
         </div>

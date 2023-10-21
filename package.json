@@ -12,10 +12,12 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@prisma/client": "^5.0.0",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.1",
     "cookies-next": "^4.0.0",
+    "cors": "^2.8.5",
     "jsonwebtoken": "^9.0.2",
     "next": "13.4.12",
     "react": "18.2.0",

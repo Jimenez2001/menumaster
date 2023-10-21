@@ -14,6 +14,7 @@ export default async function getUsuarios(req, res) {
       },
     });
 
+    
     res.status(200).json(usuarios);
   } catch (error) {
     console.error("Error al obtener roles:", error);

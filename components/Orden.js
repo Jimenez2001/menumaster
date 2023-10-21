@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';//Importamos los sweet alert
 import { formatearDinero } from '../helpers'//Para mostrar el total en Quetzales
 
 export default function Orden({orden}) {
-    const {id, nombre, total, pedido, fecha} = orden//Declaramos los valores que queremos mostrar
+    const {id, nombre, descripcion, total, pedido, fecha, mesa} = orden//Declaramos los valores que queremos mostrar
     
     const completarOrden = async () => {//Funcion que usamos en el boton para actualizar el estado del pedido
         try {
@@ -38,6 +38,7 @@ export default function Orden({orden}) {
     return (
         <div className="border p-10 space-y-5">
             <h3 className="text-2xl font-bold">Orden: {id} </h3>
+            <p className="text-lg font-bold">No. {mesa.nombre}</p>
             <p className="text-lg font-bold">Mesero: {nombre}</p>
             <div 
                 className="p-5 space-y-2"//Para mostrar la fecha del pedido
@@ -67,7 +68,7 @@ export default function Orden({orden}) {
                             
                         </div>
                         
-                       {/*  <div className="p-5 space-y-2"> ESTE SIRVE PARA MANDAR EL PRECIO DE CADA PRODUCTO UNITARIO
+                        {/* <div className="p-5 space-y-2"> 
                             <p className="text-xl font-bold text-amber-600">
                                 Precio unitario: {formatearDinero(platillo.precio)}
                             </p>
@@ -77,8 +78,11 @@ export default function Orden({orden}) {
                 ))}
             </div>
             
+            <p className="text-lg font-bold">Descripcion: {descripcion}</p>
+
+
             <div className="md:flex md:items-center md:justify-between my-10"> 
-                {/* <p className="mt-5 font-black text-4xl text-amber-600"> ESTE SIRVE PARA MOSTRAR EL TOTAL DEL PEDIDO
+                {/* <p className="mt-5 font-black text-4xl text-amber-600"> 
                     Total a Pagar: {formatearDinero(total)}
                 </p> */}
 

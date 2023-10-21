@@ -30,13 +30,26 @@ model Categoria {
 model Orden {
   id Int @id @default(autoincrement())
   nombre String
+  descripcion String
   fecha String
   total Float
   pedido Json
   estado Boolean @default(false)//Para que cada orden que se cree esté en false
-  estadoCaja Boolean @default(false)//Para que cada orden que se cree esté en false
+  mesa Mesas @relation(fields: [mesa_id], references: [id])
+  mesa_id Int
 }
 
+//Tabla de las ventas
+model Ventas {
+  id Int @id @default(autoincrement())
+  noPedido Int
+  nombre String
+  fecha String
+  total Float
+  pedido Json
+  mesa String
+  fechaVenta DateTime
+}
 
 // Usuarios
 model Usuarios {
@@ -54,3 +67,11 @@ model Roles {
   rol String
   usuarios Usuarios[]
 }
+
+model Mesas {
+  id Int @id @default(autoincrement())
+  nombre String
+  estado Boolean @default(false)
+  ordenes Orden[]
+  }
+

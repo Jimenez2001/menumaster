@@ -3,6 +3,7 @@ import Image from "next/image";
 import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Swal from "sweetalert2"; //Importamos los sweet alert
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -41,7 +42,7 @@ export default function Login() {
       const usuario = { email: email.trim(), password: password.trim() };
 
       if (usuario.email === "" || usuario.password === "") {
-        alert("Todos los campos son obligatorios");
+        Swal.fire("Error", "Todos los campos son obligatorios", "error");
         return;
       }
 
@@ -57,6 +58,15 @@ export default function Login() {
 
       await getIdUsuario(token);
     } catch (error) {
+
+      if (error.response && error.response.data && error.response.data.error) {
+        const errorMessage = error.response.data.error;
+        Swal.fire("Error", errorMessage, "error");
+      } else {
+        Swal.fire("Error", "Error encontrado", "error");
+        console.error("Error de API:", error);
+      }
+
       console.log(error);
     }
   };
@@ -64,30 +74,51 @@ export default function Login() {
   useEffect(() => {
     if (usuarioActual?.rol?.rol === "administrador") {
       router.push("/admin");
+      Swal.fire(
+        "Administrador Logeado",
+        "El administrador se ha logeado correctamente",
+        "success"
+      );
       console.log("Administrador Logeado correctamente");
       return;
     }
 
     if (usuarioActual?.rol?.rol === "mesero") {
       router.push("/home");
+      Swal.fire(
+        "Mesero Logeado",
+        "El mesero se ha logeado correctamente",
+        "success"
+      );
       console.log("Mesero Logeado correctamente");
       return;
     }
 
     if (usuarioActual?.rol?.rol === "cocinero") {
       router.push("/cocina");
+      Swal.fire(
+        "Cocinero Logeado",
+        "El cocinero se ha logeado correctamente",
+        "success"
+      );
       console.log("Cocinero Logeado correctamente");
       return;
     }
 
     if (usuarioActual?.rol?.rol === "cajero") {
       router.push("/caja");
+      Swal.fire(
+        "Cajero Logeado",
+        "El cajero se ha logeado correctamente",
+        "success"
+      );
       console.log("Cajero Logeado correctamente");
       return;
     }
   }, [usuarioActual]);
 
   return (
+    <div>
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Image
         width={300}
@@ -122,7 +153,9 @@ export default function Login() {
           </div>
         </form>
       </div>
-      <footer className="bg-gray-800 text-white py-4">
+      
+    </div>
+    <footer className="bg-gray-800 text-white py-4">
         <div className="container mx-auto text-center">
           <p>
             &copy; {new Date().getFullYear()} MenuMaster. Todos los derechos
