@@ -23,7 +23,7 @@ const Sidebar = () => {
   //PARA OBTENER EN PANTALLA EL USUARIO LOGUEADO
   const getIdUsuario = async () => {
     try {
-      const url = "http://localhost:3000/api/decodeToken";
+      const url = "https://menumaster-production.up.railway.app/api/decodeToken";
       const response = await axios.post(url, { token });
       await getUsuario(response.data.userId);
     } catch (error) {
@@ -34,7 +34,7 @@ const Sidebar = () => {
   const getUsuario = async (id) => {
     try {
       console.log("Usuario ID", id);
-      const url = `http://localhost:3000/api/usuario/${id}`;
+      const url = `https://menumaster-production.up.railway.app/api/usuario/${id}`;
       const response = await axios.get(url);
       console.log(response.data);
       setUsuarioActual(response.data);
@@ -60,7 +60,7 @@ const Sidebar = () => {
 
   const getMesas = async () => {
     try {
-      const url = "http://localhost:3000/api/mesas/mesas";
+      const url = "https://menumaster-production.up.railway.app/api/mesas/mesas";
       const { data } = await axios(url);
 
       const mesasOcupadas = data.filter((mesa) => mesa.estado === true);
@@ -97,7 +97,7 @@ const Sidebar = () => {
       if (result.isConfirmed) {
         // Realiza la solicitud para eliminar el usuario
         axios
-          .delete(`http://localhost:3000/api/ordenes/delete/${id}`) // Ajusta la URL de la solicitud según tu API
+          .delete(`https://menumaster-production.up.railway.app/api/ordenes/delete/${id}`) // Ajusta la URL de la solicitud según tu API
           .then((response) => {
             console.log(response);
             getMesas();
@@ -119,7 +119,7 @@ const Sidebar = () => {
 
   const getOrdenes = async (id) => {
     try {
-      const url = `http://localhost:3000/api/ordenes/mesas/${id}`;
+      const url = `https://menumaster-production.up.railway.app/api/ordenes/mesas/${id}`;
       const { data } = await axios(url);
       console.log(data[0].pedido);
 

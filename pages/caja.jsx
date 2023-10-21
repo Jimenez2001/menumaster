@@ -25,7 +25,7 @@ export default function caja() {
   // 4
   const getIdUsuario = async () => {
     try {
-      const url = "http://localhost:3000/api/decodeToken";
+      const url = "https://menumaster-production.up.railway.app/api/decodeToken";
       const response = await axios.post(url, { token });
       getUsuario(response.data.userId);
     } catch (error) {
@@ -35,7 +35,7 @@ export default function caja() {
 
   const getUsuario = async (id) => {
     try {
-      const url = `http://localhost:3000/api/usuario/${id}`;
+      const url = `https://menumaster-production.up.railway.app/api/usuario/${id}`;
       const response = await axios.get(url);
       console.log("perro usuario", response.data);
       setUsuarioActual(response.data);
@@ -47,7 +47,7 @@ export default function caja() {
   // PARA OBTENER LAS MESAS EXISTENTES
   const getMesas = async () => {
     try {
-      const url = "http://localhost:3000/api/mesas/mesas";
+      const url = "https://menumaster-production.up.railway.app/api/mesas/mesas";
       const { data } = await axios(url);
       setMesas(data);
     } catch (error) {
@@ -58,7 +58,7 @@ export default function caja() {
   //PARA MOSTRAR LA INFORMACIÓN DE LA ORDEN DE LA MESA SELECCIONADA
   const getOrdenes = async (id) => {
     try {
-      const url = `http://localhost:3000/api/ordenes/mesas/${id}`;
+      const url = `https://menumaster-production.up.railway.app/api/ordenes/mesas/${id}`;
       const { data } = await axios(url);
       console.log(data);
       setOrdenes(data);
@@ -85,8 +85,8 @@ export default function caja() {
         product: {
           name: "Pago Comida",
           description: "Por consumo de alimentos",
-          cancel_url: "http://localhost:3000/caja",
-          success_url: "http://localhost:3000/caja",
+          cancel_url: "https://menumaster-production.up.railway.app/caja",
+          success_url: "https://menumaster-production.up.railway.app/caja",
           custom_payment_method_settings: "true",
           card_payments_enabled: "true",
           bank_transfer_payments_enabled: "true",
@@ -126,8 +126,8 @@ export default function caja() {
       console.log("no se xd", producto);
       const response = await axios.post(url, producto, {
         headers: {
-          "X-PUBLIC-KEY": process.env.SECRETPUBLIC,
-          "X-SECRET-KEY": process.env.SECRETKEY,
+          "X-PUBLIC-KEY": process.env.NEXT_PUBLIC_SECRETPUBLIC,
+          "X-SECRET-KEY": process.env.NEXT_PUBLIC_SECRETKEY,
         },
       });
 
