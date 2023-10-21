@@ -126,8 +126,8 @@ export default function caja() {
       console.log("no se xd", producto);
       const response = await axios.post(url, producto, {
         headers: {
-          "X-PUBLIC-KEY": process.env.SECRETPUBLIC,
-          "X-SECRET-KEY": process.env.SECRETKEY,
+          "X-PUBLIC-KEY": process.env.NEXT_PUBLIC_SECRETPUBLIC,
+          "X-SECRET-KEY": process.env.NEXT_PUBLIC_SECRETKEY,
         },
       });
 
