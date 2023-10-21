@@ -15,7 +15,7 @@ export default function Admin() {
 
   const getIdUsuario = async () => {
     try {
-      const url = "https://menumaster-production.up.railway.app/api/decodeToken";
+      const url = "https://bloody-carriage-production.up.railway.app/api/decodeToken";
       const response = await axios.post(url, { token });
       getUsuario(response.data.userId);
     } catch (error) {
@@ -25,7 +25,7 @@ export default function Admin() {
 
   const getUsuario = async (id) => {
     try {
-      const url = `https://menumaster-production.up.railway.app/api/usuario/${id}`;
+      const url = `https://bloody-carriage-production.up.railway.app/api/usuario/${id}`;
       const response = await axios.get(url);
       console.log("perro usuario", response.data);
       setUsuarioActual(response.data);

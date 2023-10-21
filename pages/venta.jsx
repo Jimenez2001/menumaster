@@ -32,7 +32,7 @@ export default function venta() {
   //PARA OBTENER EN PANTALLA EL USUARIO LOGUEADO
   const getIdUsuario = async () => {
     try {
-      const url = "https://menumaster-production.up.railway.app/api/decodeToken";
+      const url = "https://bloody-carriage-production.up.railway.app/api/decodeToken";
       const response = await axios.post(url, { token });
       await getUsuario(response.data.userId);
     } catch (error) {
@@ -43,7 +43,7 @@ export default function venta() {
   const getUsuario = async (id) => {
     try {
       console.log("La queso", id);
-      const url = `https://menumaster-production.up.railway.app/api/usuario/${id}`;
+      const url = `https://bloody-carriage-production.up.railway.app/api/usuario/${id}`;
       const response = await axios.get(url);
       console.log(response.data);
       setUsuarioActual(response.data);

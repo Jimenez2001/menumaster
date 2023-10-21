@@ -25,7 +25,7 @@ export default function Total() {
 
   const getMesas = async () => {
     try {
-      const url = "https://menumaster-production.up.railway.app/api/mesas/mesas";
+      const url = "https://bloody-carriage-production.up.railway.app/api/mesas/mesas";
       const { data } = await axios(url);
       setMesas(data);
     } catch (error) {
