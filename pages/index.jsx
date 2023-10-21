@@ -148,7 +148,7 @@ export default function Login() {
             <input
               className="w-full bg-yellow-600 hover:bg-yellow-800 text-white py-3 px-10 uppercase font-bold rounded-lg"
               type="submit"
-              value="Iniciar Sesión"
+              value="Iniciar Sesión"//Cmentario
             />
           </div>
         </form>
